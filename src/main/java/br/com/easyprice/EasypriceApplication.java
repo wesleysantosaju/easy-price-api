@@ -13,7 +13,7 @@ public class EasypriceApplication {
 
 		SpringApplication.run(EasypriceApplication.class, args);
 
-		// Criação do diretório 'uploads'
+		// Criação do diretório 'upload'
 		String uploadDirectoryPath = "uploads";
 		File uploadDirectory = new File(uploadDirectoryPath);
 		if (!uploadDirectory.exists()) {
