@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -27,6 +28,10 @@ public class PostoCombustivel {
 
     private String imagemPath;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "data_criacao")
+    private Date dataCriacao; // Campo de data de criação
+
     @OneToMany(mappedBy = "postoCombustivel", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Comentarios> comentarios = new ArrayList<>();
@@ -43,6 +48,7 @@ public class PostoCombustivel {
         this.formaPagamento = formaPagamento;
         this.imagemPath = imagemPath;
         this.comentarios = comentarios;
+        this.dataCriacao = new Date(); // Define a data de criação como a data atual
     }
 
     public Long getId() {
@@ -115,5 +121,18 @@ public class PostoCombustivel {
 
     public void setComentarios(List<Comentarios> comentarios) {
         this.comentarios = comentarios;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        dataCriacao = new Date(); // Define a data atual antes de persistir o objeto
+    }
+
+    public Date getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
     }
 }
