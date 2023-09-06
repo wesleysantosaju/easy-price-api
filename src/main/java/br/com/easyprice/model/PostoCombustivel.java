@@ -48,7 +48,7 @@ public class PostoCombustivel {
         this.formaPagamento = formaPagamento;
         this.imagemPath = imagemPath;
         this.comentarios = comentarios;
-        this.dataCriacao = new Date(); // Define a data de criação como a data atual
+        this.dataCriacao = new Date(); // Define a data de criação como a data atua
     }
 
     public Long getId() {
