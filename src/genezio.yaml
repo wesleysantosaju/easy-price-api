@@ -1,0 +1,10 @@
+frontend:
+    path: ./
+    publish: ""
+    scripts:
+        build: mvn clean install
+        deploy: mvn clean install
+    subdomain: easy-price-api
+name: easy-price-api
+region: us-east-1
+yamlVersion: 2
